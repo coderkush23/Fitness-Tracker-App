@@ -1,17 +1,20 @@
-import logo from './logo.svg';
+import '../src/index.css';
 import './App.css';
-import { RouteProvider } from './uti;ity/context/RouterContext';
-import Router from './router/Router';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import SignIn from './views/authentication/sign-in';
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <RouteProvider>
-        <Router />
-      </RouteProvider>
+      <Router>
+        <Routes>
+          {/* Default Route to Redirect to Sign-In */}
+          <Route path="/" element={<Navigate to="/sign-in" />} />
+
+          {/* Route for Sign-In Page */}
+          <Route path="/sign-in" element={<SignIn />} />
+        </Routes>
+      </Router>
     </>
   );
 }
